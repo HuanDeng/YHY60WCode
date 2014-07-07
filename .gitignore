@@ -1,0 +1,7 @@
+*.d
+*.o
+*.htm
+*.bak
+*.doc
+Project/Obj/
+Project/List/
