@@ -3,5 +3,6 @@
 *.htm
 *.bak
 *.doc
+*.dep
 Project/Obj/
 Project/List/
