@@ -136,8 +136,13 @@ void PendSV_Handler(void)
   * @param  None
   * @retval None
   */
+extern vu32 TimingDelay;
 void SysTick_Handler(void)
 {
+      if(TimingDelay!=0x00)
+	{
+		TimingDelay--;
+	}
 }
 
 /******************************************************************************/
