@@ -1,1 +1,1 @@
-const char version[]= "2014/7/14";
+const char version[]= "2014/7/27";

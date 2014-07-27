@@ -608,6 +608,21 @@
               <FileType>1</FileType>
               <FilePath>..\exModel\src\SysTick.c</FilePath>
             </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\exModel\src\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>front.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\exModel\src\front.c</FilePath>
+            </File>
+            <File>
+              <FileName>RTC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\exModel\src\RTC.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

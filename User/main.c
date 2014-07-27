@@ -22,12 +22,16 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f2xx.h"
 #include "SysTick.h"
+#include "oled.h"
+#include "adc.h"
+#include "stdio.h"
+#include "RTC.h"
 
 
 int main(void)
 {
 GPIO_InitTypeDef  GPIO_InitStructure;
-
+char strbuf[10];
 
   /* GPIOE Periph clock enable */
   SysTick_Configuration();
@@ -40,24 +44,22 @@ GPIO_InitTypeDef  GPIO_InitStructure;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
   GPIO_Init(GPIOE, &GPIO_InitStructure);
-      
-
-
-Testmain();
-//OLEDPortInit();
+  OLED_Init_I();
+  ADCIO_Init();
+     
   while (1)
   {
-    /* Set PG6 and PG8 */
-    //GPIOE->BSRRL = GPIO_Pin_12 | GPIO_Pin_13|GPIO_Pin_14;
-        //GPIO_SetBits(GPIOE,GPIO_Pin_12 | GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2);
-        //GPIO_SetBits(GPIOB,GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_5);
-            delay_ms(1000);
         
-        //GPIO_ResetBits(GPIOE,GPIO_Pin_12 | GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2);
-         //GPIO_ResetBits(GPIOB,GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_5);
-    //GPIOE->BSRRH = GPIO_Pin_12 | GPIO_Pin_13|GPIO_Pin_14;    
-            delay_ms(1000);
-
+      sprintf(strbuf,"CH 0=%.2fV",Get_ADC(Pch0)*0.000806);
+      Display5x8Str(0,0,"        ");
+      Display5x8Str(0,0,strbuf); 
+      Display5x8Str(1,0,"        ");
+      sprintf(strbuf,"CH 1=%.2fV",Get_ADC(Pch1)*0.000806);
+      Display5x8Str(1,0,strbuf);
+      Display5x8Str(2,0,"        ");
+      sprintf(strbuf,"CH 2=%.2fV",Get_ADC(Pch2)*0.000806);
+      Display5x8Str(2,0,strbuf);        
+      delay_ms(100);
   }
 }
 
